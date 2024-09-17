@@ -9,7 +9,7 @@ class PDF(FPDF):
 
     def header(self):
         # Logo
-        self.image('imagens\Logo_kombate.png', 75, 8, 60)
+        self.image('imagens/Logo_kombate.png', 75, 8, 60)
         # Arial bold 15
         self.set_font('Arial', '', 8)
         # Move to the right
@@ -189,7 +189,7 @@ class PDF5(FPDF):
 
     def header(self):
         # Logo
-        self.image('imagens\Logo_kombate.png', 75, 8, 60)
+        self.image('imagens/Logo_kombate.png', 75, 8, 60)
         # Arial bold 15
         self.set_font('Arial', '', 8)
         # Move to the right
