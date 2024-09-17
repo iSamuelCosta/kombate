@@ -18,3 +18,4 @@ openpyxl
 folium == 0.17.0
 pydeck==0.8.1b0
 streamlit_folium == 0.22.0
+mysql-connector-python
