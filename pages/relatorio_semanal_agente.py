@@ -19,7 +19,7 @@ from gerar_pdf import *
 
 from folium.plugins import HeatMap
 
-import mysql.connector
+
 
 import smtplib
 from email.mime.multipart import MIMEMultipart
