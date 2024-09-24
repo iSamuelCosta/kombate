@@ -549,9 +549,9 @@ SELECT nome_nudade FROM unidades_saude WHERE id_unidade = {ubs}
 
 def query_pessoas_ubs(ano, semana, ubs):
     return f'''
-SELECT m.data_atendimento as "Data", m.nome_paciente as "Nome", m.faixa_etaria as "Faixa etária", m.rua as "Rua", m.bairro as "Bairro", m.numero as "Número"
+SELECT m.data_atendimento as "Data", m.nome_paciente as "Nome", f.faixa_etaria as "Faixa etária", m.rua as "Rua", m.bairro as "Bairro", m.numero as "Número"
 FROM  monitorizacao_doencas_diarreicas m
-
+join faixa_etaria_diarreicas f on f.id = m.faixa_etaria
 where m.ano = {ano} 
 AND m.semana_epidemiologica = {semana}
 and m.unidade_saude = {ubs}

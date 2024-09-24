@@ -119,6 +119,27 @@ class PDF3(FPDF):
         
         # Restaurar a posição original do cursor
         self.set_xy(original_x, original_y)
+    def create_table2(self, df):
+        self.set_font('Arial', size = 10)
+        DF=df
+        DF = DF.applymap(str)
+        COLUMNS = [list(DF)]  # Get list of dataframe columns
+        ROWS = DF.values.tolist()  # Get list of dataframe rows
+        DATA = COLUMNS + ROWS
+        blue = (0, 0, 0)
+        grey = (128, 128, 128)
+        headings_style = FontFace(emphasis="ITALICS", color=blue, fill_color=grey,)
+
+        with self.table(
+            line_height=self.font_size*1.5,
+            text_align="CENTER",
+            width=190,
+            headings_style=headings_style
+        ) as table:
+            for data_row in DATA:
+                row = table.row()
+                for datum in data_row:
+                    row.cell(datum)
 
 
 

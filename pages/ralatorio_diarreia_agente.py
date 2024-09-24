@@ -380,6 +380,9 @@ with col12:
         pdf.set_xy(eixo_x_novo, pdf.get_y())
         pdf.multi_cell(largura_celula, 5, f'O material colhido foi: {texto_colheu_material}')
         pdf.set_font('Times', '', 12)
+    
+    pdf.add_page()
+    pdf.create_table2(df_pessoas)
     pdf.output(f'relatorio_diarreia_{semana_selecionando}_{ano_selecionando}_{nome_ubs}.pdf', 'F')
 
     with open(f'relatorio_diarreia_{semana_selecionando}_{ano_selecionando}_{nome_ubs}.pdf', "rb") as file:

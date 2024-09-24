@@ -62,7 +62,7 @@ if len(data_filtro) < 2:
 else:
 
     bairro_visitas = conn.query(querry_bairro(data_filtro[0], data_filtro[1]), ttl=600)
-    teste = pd.read_csv('lat_long_final - Sheet1 (1).csv')
+    teste = pd.read_csv('lat_long_fina.csv')
 
     bairro_visitas = bairro_visitas.applymap(lambda x: str(x).upper() if isinstance(x, str) else x)
     teste = teste.applymap(lambda x: str(x).upper() if isinstance(x, str) else x)
