@@ -56,10 +56,11 @@ class PDF(FPDF):
 
 
 class PDF3(FPDF):
-    def __init__(self, dt_in, dt_fin):
+    def __init__(self, dt_in, dt_fin, ubs):
         super().__init__()
         self.dt_in = dt_in
         self.dt_fin = dt_fin
+        self.ubs = ubs
 
     def header(self):
         # Logo
@@ -74,7 +75,8 @@ class PDF3(FPDF):
         
         self.set_font('Arial', '', 8)
         self.cell(0, 5, f'Relatório da semana epidemiológica de {self.dt_in} do ano de {self.dt_fin}', 0, 1, 'C')
-        self.ln(5)
+        
+        self.cell(0, 5, f'Relatório da unidade de saude {self.ubs}', 0, 1, 'C')
         # Line break
         
 

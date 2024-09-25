@@ -296,7 +296,7 @@ with col11:
         connection.close()
 with col12:
     
-    pdf = PDF3(semana_selecionando, ano_selecionando)  # Passando dt_in e dt_fin ao criar uma instância da classe PDF
+    pdf = PDF3(semana_selecionando, ano_selecionando, nome_ubs)  # Passando dt_in e dt_fin ao criar uma instância da classe PDF
 
 
 
