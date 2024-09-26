@@ -113,7 +113,7 @@ else:
 
     
     fig_bairro = criar_grafico_horizontal(bairro_visitas,'numero_de_visitas', 'bairro', 'Grafico bairros')
-   
+    st.text(data_filtro[0])
 
     with st.container(height=600):
         st.markdown("<h4 style='text-align: center;'>Visitas por bairro</h4>", unsafe_allow_html=True)
