@@ -152,4 +152,28 @@ with st.container(border=True):
         with st.container(height=450):
             st.altair_chart(fig_arquivos_mes, use_container_width=True)
             
-        
+conn5 = st.connection('mysql_6', type='sql')
+df_quantidade_solicitacao = conn5.query("select count(id) as Contagem from solicitacao", ttl=600)
+df_quantidade_tratamento = conn5.query("select count(id) as Contagem from tratamento", ttl=600)
+df_quantidade_viagem = conn5.query("select count(id) as Contagem from viagem", ttl=600)
+df_viagem_mes = conn5.query("select count(id) as Contagem, DATE_FORMAT(inicio, '%m/%y') as mes_ano from viagem group by mes_ano", ttl=600)
+
+with st.container(border=True):
+    col1, col2 = st.columns([3,1])
+    with col1:
+        st.markdown("<h2 style='text-align: center;'>Resumo Transporte</h2>", unsafe_allow_html=True)
+    with col2:
+        dt_mais_recente = conn5.query("SELECT max(inicio) as max_date from viagem", ttl=600)
+        dt_mais_recente = pd.to_datetime(dt_mais_recente['max_date'].iloc[0]).strftime('%d/%m/%Y')
+        st.markdown(f"<h2 style='text-align: center;'>Data mais recente: {dt_mais_recente}</h2>", unsafe_allow_html=True)
+    col1, col2 = st.columns([3,1])
+    with col2:
+        with st.container(height=450):
+            st.metric("Quantidade de Solicitações", formata_numero(df_quantidade_solicitacao['Contagem'].iloc[0]))
+            st.metric("Quantidade de Tratamentos", formata_numero(df_quantidade_tratamento['Contagem'].iloc[0]))
+            st.metric("Quantidade de Viagens", formata_numero(df_quantidade_viagem['Contagem'].iloc[0]))
+    with col1:
+        fig_viagem_mes = criar_grafico_linhas(df_viagem_mes, 'mes_ano', 'Contagem', "Viagens por mês")
+        with st.container(height=450):
+            st.altair_chart(fig_viagem_mes, use_container_width=True)
+            
