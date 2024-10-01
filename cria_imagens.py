@@ -110,3 +110,19 @@ def criar_grafico_varias_linhas(data, x, y, titulo, tamanho, color):
     grafico=grafico.properties(height=tamanho, width = tamanho * 3)
     grafico=grafico.configure(background="transparent")
     return grafico
+
+def cria_grafico_pizza(dados, valor, legenda, titulo, rad, orient):
+    base = alt.Chart(dados).mark_arc(innerRadius=rad).encode(
+        theta=valor,
+        color=alt.Color(legenda)
+    )
+
+    base = base.properties(
+         title={
+            "text": titulo,
+            "anchor": orient  # Centralizar o título
+        }
+    )
+    base = base.properties(height=400)
+    base = base.configure(background="transparent")  # Corrected the property name
+    return base
