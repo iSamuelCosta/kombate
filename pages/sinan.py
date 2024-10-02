@@ -208,7 +208,7 @@ else:
     with sele4:
         confirmados = st.toggle("Ativar os casos confirmados")
     if confirmados:
-        teste = pd.read_csv('lat_long_final - Sheet1 (1).csv')
+        teste = pd.read_csv('lat_long_fina.csv')
 
         bairro_visitas = casos_confirmados_bairro.applymap(lambda x: str(x).upper() if isinstance(x, str) else x)
         teste = teste.applymap(lambda x: str(x).upper() if isinstance(x, str) else x)
